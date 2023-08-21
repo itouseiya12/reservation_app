@@ -1,0 +1,40 @@
+<%= @rooms.count %>件見つかりました。
+
+<h1>登録済み一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>住所</th>
+      <th>宿泊費/日</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td>
+      <% if room.roomimage.present? %>
+      <%= image_tag room.roomimage.to_s, size: "150x100" %>
+      <% else %>
+      <%= image_tag "default_room.png", size: "150x100" %>
+      <% end %></td>
+      <td><%= room.roomname %></td>
+      <td><%= room.roominfo %></td>
+      <td><%= room.address %></td>
+      <td><%= room.price %>円</td>
+      <td><%= link_to '詳細',room_path(room)%></td>
+    </tr>  
+    <% end %>
+  </tbody>
+</table>
+  
+
+      
+      
+      
+      
+  

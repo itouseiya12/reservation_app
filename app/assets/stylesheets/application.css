@@ -1,15 +1,76 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+  * {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-family: Arial;
+    }
+  
+  .dropdown {
+    display: inline-block;
+    margin: 3em;
+    }
+  
+  #tg {
+    display: none;
+    }
+  
+  .menu {
+    position: relative;
+    visibility: hidden;
+    opacity: 0;
+    top: -10px;
+    list-style: none;
+    }
+  
+  .dropInput:checked ~ .menu {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    }
+  
+  .dropLabel, .item {
+    padding: 1em 1.5em;
+    display: block;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    color: black;
+    text-decoration: none;
+    }
+  
+
+
+    .header01 {
+        padding: 16px 24px;
+        background-color: #fafafa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .header01-logo {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      
+      .header01-list {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      
+      .header01-item--contact {
+        background-color: #2486d1;
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 6px;
+      }
+
+      li{
+        list-style:none
+      }
+
+    

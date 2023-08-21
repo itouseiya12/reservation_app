@@ -1,0 +1,59 @@
+<h1>フリーワード検索</h1>
+<div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <%= f.text_field :word,placeholder:"キーワードを入力" %>
+    <%= f.submit "検索", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<h1>エリア検索</h1>
+<div class="searcharea_form">
+  <%= form_with url: searcharea_path, local: true, method: :get do |f| %>
+    <%= f.text_field :word,placeholder:"エリア名を入力" %>
+    <%= f.submit "検索", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+
+<h1>登録済み一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>宿泊費/日</th>
+      <th>作成日</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td>
+      <% if room.roomimage.present? %>
+      <%= image_tag room.roomimage.to_s, size: "150x100" %>
+      <% else %>
+      <%= image_tag "default_room.png", size: "150x100" %>
+      <% end %></td>
+    
+      <td><%= link_to room.roomname, room_path(room) %></td>
+      <td><%= room.roominfo %></td>
+      <td><%= room.price %>円/日</td>
+      <td><%= room.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= link_to '編集',edit_room_path(room)%></td>
+      <td><%= button_to "削除",room, method: :delete,data: { turbo_method: 'delete' }%></td>
+    </tr>  
+    <% end %>
+  </tbody>
+</table>
+  
+
+      
+      
+      
+      
+  

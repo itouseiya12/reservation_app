@@ -1,16 +1,43 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReservationApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title>ReservationApp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
+    <header class="header01">
+    <%= link_to root_path, class: "navbar-item" do %>
+    <h1>ReservationApp</h1> 
+    <% end %>
+    <nav class="header01-nav">
+      <ul class="header01-list">
+        <li>
+          <% if user_signed_in? %>
+          <div class="dropdown">
+            <input id="tg" class="dropInput" type="checkbox">
+            <label for="tg" class="dropLabel"><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '50x50' %><%= current_user.username %></label>
+            <ul class="menu animation">
+              <li><a href="/profile">アカウント設定</a></li>
+              <li><a href="rooms/new">新規部屋登録</a></li>
+              <li><a href="rooms">登録済み部屋一覧</a></li>
+              <li><a href="/reservations">予約済み一覧</a></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </li>
+        <% else %>
+         <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+         <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

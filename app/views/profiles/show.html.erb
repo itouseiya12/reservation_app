@@ -1,0 +1,22 @@
+<h1>プロフィール</h1>
+
+<a href="/profile/edit">編集</a>
+<table class="table">
+  <tr>
+    <th scope="row"><%= t(User.human_attribute_name(:ユーザー名)) %></th>
+    <td><%= current_user.username %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t(User.human_attribute_name(:自己紹介)) %></th>
+    <td><%= current_user.profile %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t(User.human_attribute_name(:アバターアイコン)) %></th>
+    <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '50x50' %></td>
+  </tr>
+</table>
+      
+     
+<a href="/users/account">アカウント情報</a>       
+
+     

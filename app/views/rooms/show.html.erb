@@ -1,0 +1,51 @@
+
+<h1>施設詳細</h1>
+
+<% if @room.roomimage? %>  <!-- アップロード画像がある場合に実行する -->
+<%= image_tag @room.roomimage.url, :size => '600x450' %><!-- roomインスタンスの画像ファイルのURLを取得し表示 -->
+<% else %>  
+<%= image_tag "/assets/default_room.png", :size => '600x450',:class=>"profile-img" %>
+<% end %>
+
+<div class="RoomTextContainer">
+  <div class="RoomDetailsBody_name-and-price">
+    <p class="Details-name"><%= @room.roomname %></p>
+    <p class="Details-price">¥<%= @room.price %>〜</p>
+  </div>
+  <div>
+    <p class="Details-address"><%= @room.address %></p>
+  </div>
+  <div>
+    <p class="Details-info"><%= @room.roominfo %></p>
+  </div>
+</div>  
+
+
+
+<%= form_with model: @reservation, method: :post, url: reservations_confirm_path  ,local: true do |f| %>
+  <div class="reserve_form">
+    <%= flash[:alert] %>
+      <div>
+        <%= f.label :チェックイン %>
+        <%= f.date_field :check_in,min: Time.zone.now %>
+      </div>
+      <div>
+        <%= f.label :チェックアウト %>
+        <%= f.date_field :check_out,min: Time.zone.tomorrow %>
+      </div>
+      <div>
+        <%= f.label :人数 %>
+        <%= f.text_field :people %>
+      </div>
+      <%= f.hidden_field :room_id ,value: @room.id %>
+      <%= f.hidden_field :roomname %>
+      <%= f.hidden_field :roominfo %>
+      <%= f.hidden_field :price %>
+      <%= f.hidden_field :address %>
+      <%= f.submit '予約する' %>
+      <%= link_to "戻る", :back %>
+  </div>    
+    
+<% end %>
+
+
