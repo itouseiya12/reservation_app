@@ -17,6 +17,9 @@ class ReservationsController < ApplicationController
     elsif @reservation.check_out < @reservation.check_in
       flash[:alert] = "チェックイン日時はチェックアウト日時以降の日付にしてください。"
       redirect_to request.referer
+    elsif @reservation.people < 1
+      flash[:alert] = "0以下の数値は入力できません"
+      redirect_to request.referer
     end
   end
   

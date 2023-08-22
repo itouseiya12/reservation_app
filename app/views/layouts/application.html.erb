@@ -26,9 +26,9 @@
             <label for="tg" class="dropLabel"><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '50x50' %><%= current_user.username %></label>
             <ul class="menu animation">
               <li><a href="/profile">アカウント設定</a></li>
-              <li><a href="rooms/new">新規部屋登録</a></li>
-              <li><a href="rooms">登録済み部屋一覧</a></li>
-              <li><a href="/reservations">予約済み一覧</a></li>
+              <li><%= link_to "新規部屋登録", new_room_path, class: 'get' %></li>
+              <li><%= link_to "登録済み部屋一覧", rooms_path, class: 'get' %></li>
+              <li><%= link_to "予約済み一覧", reservations_path, class: 'get' %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
           </div>

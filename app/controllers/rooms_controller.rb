@@ -17,9 +17,11 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @room.user_id = current_user.id
     if @room.save
+      flash[:notice] = "施設情報を登録しました"
       redirect_to :rooms
     else
-      render :new
+      flash[:alert] = "施設情報を登録できませんでした"
+      redirect_to request.referer
     end
   end
 

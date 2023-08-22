@@ -1,6 +1,6 @@
 
 <h1>新規登録</h1>
-
+<%= flash[:alert] %>
 <%= form_for @room do |f| %>
 <%= f.label :施設名 %>
 <%= f.text_field :roomname %><br>
