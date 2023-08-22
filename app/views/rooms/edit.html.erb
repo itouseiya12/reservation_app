@@ -1,0 +1,19 @@
+
+<h1>施設情報の編集</h1>
+
+<%= form_for @room do |f| %>
+<%= f.label :施設名 %>
+<%= f.text_field :roomname %><br>
+
+<%= f.label :施設詳細 %>
+<%= f.text_area :roominfo %><br>
+
+<%= f.label :料金 %>
+<%= f.text_field :price %><br>
+
+<%= f.label :住所 %>
+<%= f.text_field :address %><br>
+    
+<%= f.submit  "更新", class: "btn btn-primary" %>
+<%= link_to "戻る", :back %>
+<% end %>    

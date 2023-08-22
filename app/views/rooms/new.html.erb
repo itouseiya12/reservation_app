@@ -1,0 +1,24 @@
+
+<h1>新規登録</h1>
+<%= flash[:alert] %>
+<%= form_for @room do |f| %>
+<%= f.label :施設名 %>
+<%= f.text_field :roomname %><br>
+
+<%= f.label :紹介文 %>
+<%= f.text_area :roominfo %><br>
+
+<%= f.label :宿泊費 %>
+<%= f.text_field :price %><br>
+
+<%= f.label :住所 %>
+<%= f.text_field :address %><br>
+
+<div class="field">
+  <%= f.label :部屋画像 %>
+  <%= f.file_field :roomimage %>
+</div>
+
+
+<%= f.submit "新規登録", class: "btn btn-primary"%>
+<% end %>

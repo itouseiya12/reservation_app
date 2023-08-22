@@ -1,0 +1,29 @@
+
+<h1>予約内容確認</h1>
+
+<p>合計宿泊費</p>
+<td><%= @reservation.sum_of_reserve_price.to_i %>円</td>
+<p>チェックイン日時</p>
+<td><%= @reservation.check_in.strftime('%Y/%m/%d') %></td>
+<p>チェックアウト日時</p>
+<td><%= @reservation.check_out.strftime('%Y/%m/%d') %></td>
+<p>宿泊人数</p>
+<td><%= @reservation.people %>人</td>
+<p>宿泊日数</p>
+<td><%= @reservation.sum_of_day %>日</td>
+
+
+
+<p class="ReservationConfirm">上記内容で正しければ「確定」ボタンを押してください。</p>
+  <%= form_with model: @reservation, method: :post do |f| %>
+    <%= f.hidden_field :check_in %>
+    <%= f.hidden_field :check_out %>
+    <%= f.hidden_field :sum_of_day %>
+    <%= f.hidden_field :people %>
+    <%= f.hidden_field :sum_of_reserve_price %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :room_id %>
+    <input type="submit" name="commit" value="予約を確定" class="btn ReservationConfirm__button">
+<% end %>
+
+<%= link_to "戻る", :back %>
